@@ -70,7 +70,7 @@ class PlayerController extends Controller
         $player->retired = $request->retired;
          $player->save();
 
-        return redirect('players');
+        return redirect('players')->with('status','Item created successfully!');;
     }
 
     /**
@@ -81,7 +81,9 @@ class PlayerController extends Controller
      */
     public function show(Player $player)
     {
-        //
+        return view('components.players.player-form-show', [
+            'player' => $player
+        ]);
     }
 
     /**

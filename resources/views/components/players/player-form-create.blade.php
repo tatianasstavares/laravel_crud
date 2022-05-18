@@ -1,3 +1,4 @@
+
 <form method="POST" action="{{ url('players') }}">
     @csrf
     <div class="form-group col-xl-4 col-lg-6 col-md-8 col-sm-12 mx-auto text-left form p-4">
