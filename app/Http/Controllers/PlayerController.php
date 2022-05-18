@@ -94,7 +94,9 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        //
+        return view('pages.players.edit', [
+            'player' => $player
+        ]);
     }
 
     /**
@@ -106,7 +108,15 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        $this->validate($request, [
+            'name' =>   'required',
+            'address' => 'required',
+            'description' => 'required',
+            'retired' => 'required|boolean',
+        ]);
+
+        $player->update($request->all());
+        return redirect('players')->with('status','Item edited successfully!');
     }
 
     /**
