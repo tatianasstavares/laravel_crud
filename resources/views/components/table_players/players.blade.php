@@ -4,6 +4,7 @@
         <tr>
             <th scope="col"> Name</th>
             <th scope="col">Address</th>
+            <th scope="col">Description</th>
             <th scope="col">Retired</th>
         </tr>
     </thead>
@@ -12,6 +13,7 @@
             <tr>
                 <td> {{ $player->name }}</td>
                 <td>{{ $player->address }}</td>
+                <td>{{ $player->description }}</td>
                 <td>
                     @if ($player->retired)
                         <i class="bi bi-emoji-smile"></i>

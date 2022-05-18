@@ -14,7 +14,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::orderBy('name','asc')->paginate();
+        $players = Player::orderBy('id','desc')->paginate();
         //dd($players);
         return view('pages.players.index', [
             'players' => $players
@@ -41,13 +41,35 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $this->validate($request, [
             'name' =>   'required',
-            'address' => 'required'
+            'address' => 'required',
+            'description' => 'required',
+            'retired' => 'required|boolean',
         ]);
-        Player::create($request->all());
+
+        //exemplo 2
+
+        // Player::create($request->all());
+
+
+         //exemplo 3
+
+        // Player::create([
+        //     'name' => $request->name,
+        //     'address' => $request->address,
+        // ]);
+
+         //exemplo 4
+
+
+         $player = new Player();
+         $player->name = $request->name;
+         $player->address = $request->address;
+         $player->description = $request->description;
+        $player->retired = $request->retired;
+         $player->save();
+
         return redirect('players');
     }
 
