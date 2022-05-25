@@ -32,7 +32,10 @@
                     <a type="button" href="{{ url('players/' . $player->id . '/edit') }}" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <form action="{{url('players/' . $player->id)}}" method="POST">
+                        @csrf    @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

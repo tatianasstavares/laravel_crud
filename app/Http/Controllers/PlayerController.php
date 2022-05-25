@@ -127,6 +127,16 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
-        //
+        $player->delete();
+        return redirect('players')->with('status','Item deleted successfully!');
+    }
+
+    public function search(Request $request)
+    {
+        $players = Player::where('name', 'LIKE', '%' . $request->search . '%')->paginate(15);
+
+        return view('pages.players.index', [
+            'players' => $players
+        ]);
     }
 }

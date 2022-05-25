@@ -20,6 +20,7 @@ class CreatePlayersTable extends Migration
             $table->text('description')->nullable();
             $table->boolean('retired')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
