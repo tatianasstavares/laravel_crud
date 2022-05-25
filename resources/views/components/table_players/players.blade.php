@@ -40,6 +40,8 @@
             </tr>
         @endforeach
 
+        <a type="button" href="{{ url('playersDelete') }}" class="btn btn-danger">Delete All</a>
+
     </tbody>
 </table>
 

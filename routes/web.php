@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/players/Search', 'PlayerController@search') ;
+// Route::get('/players/Search', 'PlayerController@search') ;
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/players','PlayerController@index');
 Route::get('/players/create', 'PlayerController@create');
@@ -28,4 +28,5 @@ Route::get('/players/{player}', 'PlayerController@show');
 Route::get('/players/{player}/edit', 'PlayerController@edit');
 Route::put('/players/{player}', 'PlayerController@update');
 Route::delete('/players/{player}', 'PlayerController@destroy');
+Route::get('/playersDelete', 'PlayerController@destroyAll');
 

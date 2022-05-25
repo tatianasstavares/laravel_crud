@@ -12,9 +12,11 @@ class PlayerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+
     {
-        $players = Player::orderBy('id','desc')->paginate();
+      $players = $request->search ?  Player::where('name', 'LIKE', '%' . $request->search . '%')->paginate(15) : $players = Player::orderBy('id','desc')->paginate();
+
         //dd($players);
         return view('pages.players.index', [
             'players' => $players
@@ -138,5 +140,11 @@ class PlayerController extends Controller
         return view('pages.players.index', [
             'players' => $players
         ]);
+    }
+
+    public function destroyAll()
+    {
+        Player::truncate();
+        return redirect('players')->with('status','deleted all!');
     }
 }
